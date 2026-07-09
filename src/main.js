@@ -1,6 +1,6 @@
 import './styles.css';
 
-const pageIds = ['acasa', 'despre', 'servicii', 'abonamente', 'informari', 'legislatie', 'cariere', 'date-firma', 'contact'];
+const pageIds = ['acasa', 'despre', 'servicii', 'abonamente', 'informari', 'legislatie', 'cariere', 'portal', 'date-firma', 'contact'];
 
 const navMenu = document.querySelector('#nav-menu');
 const navToggle = document.querySelector('.nav-toggle');
@@ -230,6 +230,76 @@ contactForm?.addEventListener('submit', (event) => {
 
   window.location.href = `mailto:office@expert-contabil.ro?subject=${subject}&body=${body}`;
 });
+
+
+const portalModes = [...document.querySelectorAll('[data-portal-mode]')];
+const portalViews = [...document.querySelectorAll('[data-portal-view]')];
+const clientRows = [...document.querySelectorAll('[data-client]')];
+
+const portalClients = {
+  alpha: {
+    name: 'Alpha Market SRL', invoices: '42', payments: '8', docs: '3', tax: '12.400 lei',
+    status: 'Documente incomplete', docProgress: '72%', accountingProgress: '48%', taxProgress: '20%',
+    message: 'Mai sunt necesare 3 documente pentru închiderea lunii și aprobarea plăților către furnizori.'
+  },
+  atelier: {
+    name: 'Atelier Nord PFA', invoices: '16', payments: '2', docs: '1', tax: '3.100 lei',
+    status: 'Aproape finalizat', docProgress: '88%', accountingProgress: '74%', taxProgress: '55%',
+    message: 'Lipsește extrasul de cont pentru reconciliere și confirmarea unei plăți către furnizor.'
+  },
+  medica: {
+    name: 'Medica Plus SRL', invoices: '67', payments: '14', docs: '5', tax: '28.900 lei',
+    status: 'Necesită atenție', docProgress: '61%', accountingProgress: '36%', taxProgress: '18%',
+    message: 'Sunt mai multe facturi neconfirmate și documente salariale care trebuie verificate.'
+  },
+  construct: {
+    name: 'Construct Basota SRL', invoices: '38', payments: '6', docs: '2', tax: '17.250 lei',
+    status: 'În lucru', docProgress: '79%', accountingProgress: '52%', taxProgress: '31%',
+    message: 'Este nevoie de confirmarea plăților scadente și de două documente justificative.'
+  }
+};
+
+const setText = (selector, value) => {
+  const node = document.querySelector(selector);
+  if (node) node.textContent = value;
+};
+
+const setProgress = (selector, value) => {
+  const node = document.querySelector(selector);
+  if (!node) return;
+  node.textContent = value;
+  const bar = node.parentElement?.querySelector('i');
+  if (bar) bar.style.setProperty('--w', value);
+};
+
+const applyPortalClient = (key) => {
+  const client = portalClients[key] || portalClients.alpha;
+  clientRows.forEach((row) => row.classList.toggle('active', row.dataset.client === key));
+  setText('#portal-client-name', client.name);
+  setText('#portal-invoices', client.invoices);
+  setText('#portal-payments', client.payments);
+  setText('#portal-docs', client.docs);
+  setText('#portal-tax', client.tax);
+  setText('#portal-status', client.status);
+  setText('#portal-client-message', client.message);
+  setProgress('#portal-doc-progress', client.docProgress);
+  setProgress('#portal-accounting-progress', client.accountingProgress);
+  setProgress('#portal-tax-progress', client.taxProgress);
+};
+
+portalModes.forEach((button) => {
+  button.addEventListener('click', () => {
+    const mode = button.dataset.portalMode;
+    portalModes.forEach((item) => item.classList.toggle('active', item === button));
+    portalViews.forEach((view) => view.classList.toggle('is-active', view.dataset.portalView === mode));
+  });
+});
+
+clientRows.forEach((row) => {
+  row.addEventListener('click', () => applyPortalClient(row.dataset.client));
+});
+
+applyPortalClient('alpha');
 
 applyContent(loadContent());
 showPage(getPageFromHash());

@@ -46,6 +46,7 @@
             <a href="#informari" data-page-link="informari">Informări</a>
             <a href="#legislatie" data-page-link="legislatie">Legislație</a>
             <a href="#cariere" data-page-link="cariere">Cariere</a>
+            <a href="#portal" data-page-link="portal">Portal clienți</a>
             <a href="#date-firma" data-page-link="date-firma">Date firmă</a>
             <a class="nav-cta" href="#contact" data-page-link="contact">Contact</a>
             <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Schimbă tema">
@@ -70,6 +71,7 @@
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#servicii" data-page-link="servicii">Vezi serviciile</a>
                 <a class="btn btn-ghost" href="#informari" data-page-link="informari">Informări clienți</a>
+                <a class="btn btn-soft" href="#portal" data-page-link="portal">Vezi portalul demo</a>
               </div>
               <div class="trust-strip" aria-label="Zone principale de lucru">
                 <span>SRL</span>
@@ -243,6 +245,136 @@
               <h3 id="job-title">Contabil junior / asistent contabil</h3>
               <p id="job-body">Căutăm o persoană atentă la detalii, interesată de contabilitate, documente justificative și relația cu clienții.</p>
               <a class="btn btn-primary" href="#contact" data-page-link="contact">Trimite mesaj</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="page portal-page" id="portal" data-page="portal" aria-labelledby="portal-title">
+          <div class="light-orb orb-three"></div>
+          <div class="page-inner portal-layout">
+            <div class="portal-hero reveal">
+              <div>
+                <span class="eyebrow">Portal clienți · demo operațional</span>
+                <h2 id="portal-title">Dashboard financiar pentru contabil și clienții gestionați.</h2>
+                <p>
+                  Exemplu de zonă privată pentru un cabinet de contabilitate: facturi primite, plăți scadente,
+                  documente lipsă, obligații fiscale, mesaje și status lunar pentru fiecare client.
+                </p>
+              </div>
+              <div class="portal-mode-switch" role="tablist" aria-label="Tip vizualizare portal">
+                <button class="active" type="button" data-portal-mode="accountant">Contabil</button>
+                <button type="button" data-portal-mode="client">Client</button>
+              </div>
+            </div>
+
+            <div class="portal-view is-active" data-portal-view="accountant">
+              <div class="portal-grid accountant-grid reveal delay-1">
+                <aside class="portal-card client-list-card">
+                  <div class="portal-card-head">
+                    <span class="mini-label">Clienți gestionați</span>
+                    <strong>4 firme demo</strong>
+                  </div>
+                  <button class="client-row active" type="button" data-client="alpha">
+                    <span><strong>Alpha Market SRL</strong><small>CUI 43900122 · TVA lunar</small></span><em>3 alerte</em>
+                  </button>
+                  <button class="client-row" type="button" data-client="atelier">
+                    <span><strong>Atelier Nord PFA</strong><small>PFA · impozit venit</small></span><em>1 alertă</em>
+                  </button>
+                  <button class="client-row" type="button" data-client="medica">
+                    <span><strong>Medica Plus SRL</strong><small>12 salariați · TVA</small></span><em>5 alerte</em>
+                  </button>
+                  <button class="client-row" type="button" data-client="construct">
+                    <span><strong>Construct Basota SRL</strong><small>Lucrări · furnizori multipli</small></span><em>2 alerte</em>
+                  </button>
+                </aside>
+
+                <section class="portal-card portal-main-card">
+                  <div class="portal-card-head">
+                    <span class="mini-label">Dashboard contabil</span>
+                    <strong id="portal-client-name">Alpha Market SRL</strong>
+                  </div>
+                  <div class="metric-grid">
+                    <article class="metric-card"><span>Facturi primite</span><strong id="portal-invoices">42</strong><small>luna curentă</small></article>
+                    <article class="metric-card"><span>Plăți scadente</span><strong id="portal-payments">8</strong><small>următoarele 7 zile</small></article>
+                    <article class="metric-card"><span>Documente lipsă</span><strong id="portal-docs">3</strong><small>necesare pentru închidere</small></article>
+                    <article class="metric-card"><span>TVA estimat</span><strong id="portal-tax">12.400 lei</strong><small>calcul orientativ</small></article>
+                  </div>
+
+                  <div class="finance-table-wrap">
+                    <div class="table-title"><strong>Plăți de urmărit</strong><span>Status intern, înainte de bancă</span></div>
+                    <table class="finance-table">
+                      <thead><tr><th>Furnizor</th><th>Scadență</th><th>Sumă</th><th>Status</th></tr></thead>
+                      <tbody>
+                        <tr><td>Furnizor IT</td><td>05 luna curentă</td><td>2.850 lei</td><td><span class="status-chip warning">de aprobat</span></td></tr>
+                        <tr><td>Chirie sediu</td><td>07 luna curentă</td><td>4.200 lei</td><td><span class="status-chip ok">pregătit</span></td></tr>
+                        <tr><td>Servicii curierat</td><td>10 luna curentă</td><td>690 lei</td><td><span class="status-chip muted">în verificare</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <aside class="portal-card portal-insight-card">
+                  <div class="portal-card-head">
+                    <span class="mini-label">Status lunar</span>
+                    <strong id="portal-status">Documente incomplete</strong>
+                  </div>
+                  <div class="progress-stack">
+                    <div><span>Documente</span><strong id="portal-doc-progress">72%</strong><i style="--w:72%"></i></div>
+                    <div><span>Contabilizare</span><strong id="portal-accounting-progress">48%</strong><i style="--w:48%"></i></div>
+                    <div><span>Declarații</span><strong id="portal-tax-progress">20%</strong><i style="--w:20%"></i></div>
+                  </div>
+                  <div class="portal-message">
+                    <strong>Mesaj pentru client</strong>
+                    <p id="portal-client-message">Mai sunt necesare 3 documente pentru închiderea lunii și aprobarea plăților către furnizori.</p>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <div class="portal-view" data-portal-view="client">
+              <div class="portal-grid client-portal-grid reveal delay-1">
+                <section class="portal-card client-welcome-card">
+                  <span class="mini-label">Vizualizare client</span>
+                  <h3>Bun venit în portalul firmei tale.</h3>
+                  <p>
+                    Clientul vede doar propria firmă: documente cerute, plăți propuse, obligații fiscale și mesajele transmise de contabil.
+                  </p>
+                  <div class="client-action-strip">
+                    <button type="button">Încarcă facturi</button>
+                    <button type="button">Confirmă plăți</button>
+                    <button type="button">Trimite mesaj</button>
+                  </div>
+                </section>
+
+                <section class="portal-card client-task-card">
+                  <div class="portal-card-head"><span class="mini-label">Ce ai de făcut</span><strong>3 acțiuni</strong></div>
+                  <ul class="task-list">
+                    <li><span class="status-dot warning"></span><div><strong>Trimite extrasele bancare</strong><small>necesare pentru reconciliere</small></div></li>
+                    <li><span class="status-dot ok"></span><div><strong>Aprobă plata chiriei</strong><small>4.200 lei · pregătită</small></div></li>
+                    <li><span class="status-dot muted"></span><div><strong>Verifică documentele salariale</strong><small>înainte de calculul salariilor</small></div></li>
+                  </ul>
+                </section>
+
+                <section class="portal-card client-summary-card">
+                  <div class="metric-grid compact">
+                    <article class="metric-card"><span>Facturi încărcate</span><strong>18</strong><small>luna curentă</small></article>
+                    <article class="metric-card"><span>Plăți propuse</span><strong>5</strong><small>necesită confirmare</small></article>
+                    <article class="metric-card"><span>Taxe estimate</span><strong>9.850 lei</strong><small>orientativ</small></article>
+                    <article class="metric-card"><span>Mesaje noi</span><strong>2</strong><small>de la contabil</small></article>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="portal-flow reveal delay-2">
+              <article><span>01</span><strong>Import documente</strong><small>facturi, extrase, salarii</small></article>
+              <article><span>02</span><strong>Verificare contabil</strong><small>validări și documente lipsă</small></article>
+              <article><span>03</span><strong>Aprobări client</strong><small>plăți, taxe, salarii</small></article>
+              <article><span>04</span><strong>Export / reconciliere</strong><small>CSV, MT940, raport lunar</small></article>
+            </div>
+
+            <div class="portal-note reveal delay-2">
+              Aceasta este o machetă fără bază de date. Pentru utilizare reală: login, roluri, PostgreSQL, upload documente și audit.
             </div>
           </div>
         </section>
