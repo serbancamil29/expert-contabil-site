@@ -23,8 +23,8 @@ const announcementDate = document.querySelector('#announcement-date');
 const jobTitle = document.querySelector('#job-title');
 const jobBody = document.querySelector('#job-body');
 
-const CONTENT_KEY = 'expert-contabil-neculai-liviu-content-v4';
-const THEME_KEY = 'expert-contabil-neculai-liviu-theme-v4';
+const CONTENT_KEY = 'expert-contabil-neculai-liviu-content-v10';
+const THEME_KEY = 'expert-contabil-neculai-liviu-theme-v10';
 
 const defaultContent = {
   announcementTitle: 'Termen important pentru transmiterea documentelor',
@@ -119,7 +119,7 @@ const loadContent = () => {
     const saved = localStorage.getItem(CONTENT_KEY);
     return saved ? { ...defaultContent, ...JSON.parse(saved) } : { ...defaultContent };
   } catch (error) {
-    console.warn('Nu s-a putut citi conținutul local.', error);
+    console.warn('Nu s-a putut citi conținutul salvat.', error);
     return { ...defaultContent };
   }
 };
@@ -162,10 +162,10 @@ const saveContent = () => {
   applyContent(content);
 
   if (saveStatus) {
-    saveStatus.textContent = 'Salvat automat local.';
+    saveStatus.textContent = 'Salvat automat.';
     window.clearTimeout(saveContent.statusTimeout);
     saveContent.statusTimeout = window.setTimeout(() => {
-      saveStatus.textContent = 'Salvare automată locală activă.';
+      saveStatus.textContent = 'Salvare automată activă.';
     }, 1600);
   }
 };
@@ -200,7 +200,7 @@ editorForm?.addEventListener('input', saveContent);
 resetContentButton?.addEventListener('click', () => {
   localStorage.removeItem(CONTENT_KEY);
   applyContent({ ...defaultContent });
-  if (saveStatus) saveStatus.textContent = 'Conținutul demo a fost resetat.';
+  if (saveStatus) saveStatus.textContent = 'Conținutul a fost resetat.';
 });
 
 copyContentButton?.addEventListener('click', async () => {
