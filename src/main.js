@@ -235,27 +235,52 @@ contactForm?.addEventListener('submit', (event) => {
 const portalModes = [...document.querySelectorAll('[data-portal-mode]')];
 const portalViews = [...document.querySelectorAll('[data-portal-view]')];
 const clientRows = [...document.querySelectorAll('[data-client]')];
+const clientSearchInput = document.querySelector('#client-search');
+const clientCount = document.querySelector('#client-count');
+const clientEmptyState = document.querySelector('#client-empty-state');
 
 const portalClients = {
   alpha: {
-    name: 'Alpha Market SRL', invoices: '42', payments: '8', docs: '3', tax: '12.400 lei',
+    name: 'Alpha Market SRL', invoices: '42', payments: '8', docs: '3', tax: '12.400',
     status: 'Documente incomplete', docProgress: '72%', accountingProgress: '48%', taxProgress: '20%',
     message: 'Mai sunt necesare 3 documente pentru închiderea lunii și aprobarea plăților către furnizori.'
   },
   atelier: {
-    name: 'Atelier Nord PFA', invoices: '16', payments: '2', docs: '1', tax: '3.100 lei',
+    name: 'Atelier Nord PFA', invoices: '16', payments: '2', docs: '1', tax: '3.100',
     status: 'Aproape finalizat', docProgress: '88%', accountingProgress: '74%', taxProgress: '55%',
     message: 'Lipsește extrasul de cont pentru reconciliere și confirmarea unei plăți către furnizor.'
   },
   medica: {
-    name: 'Medica Plus SRL', invoices: '67', payments: '14', docs: '5', tax: '28.900 lei',
+    name: 'Medica Plus SRL', invoices: '67', payments: '14', docs: '5', tax: '28.900',
     status: 'Necesită atenție', docProgress: '61%', accountingProgress: '36%', taxProgress: '18%',
     message: 'Sunt mai multe facturi neconfirmate și documente salariale care trebuie verificate.'
   },
   construct: {
-    name: 'Construct Basota SRL', invoices: '38', payments: '6', docs: '2', tax: '17.250 lei',
+    name: 'Construct Basota SRL', invoices: '38', payments: '6', docs: '2', tax: '17.250',
     status: 'În lucru', docProgress: '79%', accountingProgress: '52%', taxProgress: '31%',
     message: 'Este nevoie de confirmarea plăților scadente și de două documente justificative.'
+  }
+};
+
+
+const updateClientSearch = () => {
+  if (!clientSearchInput) return;
+  const query = clientSearchInput.value.trim().toLowerCase();
+  let visibleCount = 0;
+
+  clientRows.forEach((row) => {
+    const text = row.textContent.toLowerCase();
+    const isVisible = !query || text.includes(query);
+    row.hidden = !isVisible;
+    if (isVisible) visibleCount += 1;
+  });
+
+  if (clientCount) {
+    clientCount.textContent = query ? `${visibleCount} rezultate` : `${clientRows.length} firme`;
+  }
+
+  if (clientEmptyState) {
+    clientEmptyState.hidden = visibleCount !== 0;
   }
 };
 
@@ -299,7 +324,10 @@ clientRows.forEach((row) => {
   row.addEventListener('click', () => applyPortalClient(row.dataset.client));
 });
 
+clientSearchInput?.addEventListener('input', updateClientSearch);
+
 applyPortalClient('alpha');
+updateClientSearch();
 
 applyContent(loadContent());
 showPage(getPageFromHash());

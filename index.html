@@ -272,20 +272,27 @@
                 <aside class="portal-card client-list-card">
                   <div class="portal-card-head">
                     <span class="mini-label">Clienți gestionați</span>
-                    <strong>4 firme demo</strong>
+                    <strong id="client-count">4 firme</strong>
                   </div>
-                  <button class="client-row active" type="button" data-client="alpha">
-                    <span><strong>Alpha Market SRL</strong><small>CUI 43900122 · TVA lunar</small></span><em>3 alerte</em>
-                  </button>
-                  <button class="client-row" type="button" data-client="atelier">
-                    <span><strong>Atelier Nord PFA</strong><small>PFA · impozit venit</small></span><em>1 alertă</em>
-                  </button>
-                  <button class="client-row" type="button" data-client="medica">
-                    <span><strong>Medica Plus SRL</strong><small>12 salariați · TVA</small></span><em>5 alerte</em>
-                  </button>
-                  <button class="client-row" type="button" data-client="construct">
-                    <span><strong>Construct Basota SRL</strong><small>Lucrări · furnizori multipli</small></span><em>2 alerte</em>
-                  </button>
+                  <label class="client-search" for="client-search">
+                    <span>Caută rapid</span>
+                    <input id="client-search" type="search" placeholder="Nume firmă, CUI, regim TVA..." autocomplete="off" />
+                  </label>
+                  <div class="client-list-scroll" id="client-list">
+                    <button class="client-row active" type="button" data-client="alpha">
+                      <span><strong>Alpha Market SRL</strong><small>CUI 43900122 · TVA lunar</small></span><em>3 alerte</em>
+                    </button>
+                    <button class="client-row" type="button" data-client="atelier">
+                      <span><strong>Atelier Nord PFA</strong><small>PFA · impozit venit</small></span><em>1 alertă</em>
+                    </button>
+                    <button class="client-row" type="button" data-client="medica">
+                      <span><strong>Medica Plus SRL</strong><small>12 salariați · TVA</small></span><em>5 alerte</em>
+                    </button>
+                    <button class="client-row" type="button" data-client="construct">
+                      <span><strong>Construct Basota SRL</strong><small>Lucrări · furnizori multipli</small></span><em>2 alerte</em>
+                    </button>
+                  </div>
+                  <p class="client-empty-state" id="client-empty-state" hidden>Nu am găsit niciun client după acest criteriu.</p>
                 </aside>
 
                 <section class="portal-card portal-main-card">
@@ -297,7 +304,7 @@
                     <article class="metric-card"><span>Facturi primite</span><strong id="portal-invoices">42</strong><small>luna curentă</small></article>
                     <article class="metric-card"><span>Plăți scadente</span><strong id="portal-payments">8</strong><small>următoarele 7 zile</small></article>
                     <article class="metric-card"><span>Documente lipsă</span><strong id="portal-docs">3</strong><small>necesare pentru închidere</small></article>
-                    <article class="metric-card"><span>TVA estimat</span><strong id="portal-tax">12.400 lei</strong><small>calcul orientativ</small></article>
+                    <article class="metric-card tax-metric"><span>TVA estimat</span><strong id="portal-tax">12.400</strong><small>lei · calcul orientativ</small></article>
                   </div>
 
                   <div class="finance-table-wrap">
@@ -359,7 +366,7 @@
                   <div class="metric-grid compact">
                     <article class="metric-card"><span>Facturi încărcate</span><strong>18</strong><small>luna curentă</small></article>
                     <article class="metric-card"><span>Plăți propuse</span><strong>5</strong><small>necesită confirmare</small></article>
-                    <article class="metric-card"><span>Taxe estimate</span><strong>9.850 lei</strong><small>orientativ</small></article>
+                    <article class="metric-card tax-metric"><span>Taxe estimate</span><strong>9.850</strong><small>lei · orientativ</small></article>
                     <article class="metric-card"><span>Mesaje noi</span><strong>2</strong><small>de la contabil</small></article>
                   </div>
                 </section>
@@ -373,9 +380,6 @@
               <article><span>04</span><strong>Export / reconciliere</strong><small>CSV, MT940, raport lunar</small></article>
             </div>
 
-            <div class="portal-note reveal delay-2">
-              Aceasta este o machetă fără bază de date. Pentru utilizare reală: login, roluri, PostgreSQL, upload documente și audit.
-            </div>
           </div>
         </section>
 
