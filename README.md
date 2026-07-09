@@ -1,56 +1,38 @@
-# Website firmă contabilitate
+# Expert Contabil Neculai Liviu - Site v2
 
-Template static pentru o companie de contabilitate. Include secțiuni pentru:
+Site static Vite pentru prezentarea serviciilor contabile.
 
-- Despre companie
-- Servicii
-- Abonamente
-- Proces de lucru
-- Întrebări frecvente
-- Contact
+## Ce conține v2
 
-## Rulare locală
+- Date firmă integrate:
+  - Expert Contabil Neculai Liviu
+  - Cod fiscal: 25368513
+  - Adresă: Iași, Aleea Basota nr. 6
+- Secțiuni: Despre, Servicii, Abonamente, Informări, Documente utile, Legislație, Cariere, FAQ, Contact.
+- Editor demo pentru informări și ofertă de angajare.
 
-```bash
-npm install
-npm run dev
-```
+## Important despre editor
 
-Deschide URL-ul afișat în terminal, de obicei `http://localhost:5173`.
+Editorul inclus este doar pentru test pe site static. El salvează datele în `localStorage`, adică în browserul persoanei care editează. Pentru ca informările să fie vizibile tuturor vizitatorilor, trebuie adăugat backend cu autentificare și bază de date.
 
-## Build pentru producție
+Variante reale pentru v3:
 
-```bash
-npm run build
-```
-
-Fișierele finale vor fi generate în folderul `dist`.
+1. Render Web Service + PostgreSQL + admin login.
+2. Supabase/Firebase pentru conținut editabil.
+3. Headless CMS, de exemplu Sanity/Strapi/Directus.
 
 ## Deploy pe Render
 
-1. Pune proiectul într-un repository GitHub/GitLab/Bitbucket.
-2. În Render: New > Static Site.
-3. Conectează repository-ul.
-4. Setări recomandate:
-   - Build Command: `npm install && npm run build`
-   - Publish Directory: `dist`
-5. După deploy, Render va genera un URL de test de forma `nume-site.onrender.com`.
+Build Command:
 
-## Ce trebuie modificat
+```bash
+npm install && npm run build
+```
 
-În `index.html`:
+Publish Directory:
 
-- Numele companiei: `ContaPlus Expert`
-- Telefon: `+40 700 111 222`
-- Email: `office@contaplus.ro`
-- Oraș / adresă
-- Texte despre companie
-- Prețuri abonamente
+```bash
+dist
+```
 
-În `src/main.js`:
-
-- Schimbă emailul din linkul `mailto:office@contaplus.ro`.
-
-## Observație formular contact
-
-Formularul actual deschide clientul de email al utilizatorului. Pentru trimitere automată fără client de email, trebuie adăugat fie un backend, fie un serviciu extern pentru formulare.
+Nu sunt necesare variabile de mediu pentru această versiune.
