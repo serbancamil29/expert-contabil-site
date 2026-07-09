@@ -253,7 +253,7 @@ const portalClients = {
   medica: {
     name: 'Medica Plus SRL', invoices: '67', payments: '14', docs: '5', tax: '28.900',
     status: 'Necesită atenție', docProgress: '61%', accountingProgress: '36%', taxProgress: '18%',
-    message: 'Sunt mai multe facturi neconfirmate și documente salariale care trebuie verificate.'
+    message: 'Sunt mai multe facturi neconfirmate și documente justificative care trebuie verificate.'
   },
   construct: {
     name: 'Construct Basota SRL', invoices: '38', payments: '6', docs: '2', tax: '17.250',
